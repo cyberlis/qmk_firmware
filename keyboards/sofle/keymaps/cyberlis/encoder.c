@@ -24,7 +24,7 @@
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (layer_state_cmp(layer_state, MODE_LEFT)) {
         if (index == 1) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_VOLU);
             } else {
                 tap_code(KC_VOLD);
@@ -32,7 +32,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (layer_state_cmp(layer_state, MODE_RIGHT)) {
         if (index == 0) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_BRIU);
             } else {
                 tap_code(KC_BRID);
@@ -40,14 +40,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else {
         if (index == 1) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_RGHT);
             } else {
                 tap_code(KC_LEFT);
             }
         }
         if (index == 0) {
-            if (clockwise) {
+            if (!clockwise) {
                 tap_code(KC_DOWN);
             } else {
                 tap_code(KC_UP);
