@@ -18,9 +18,11 @@
 //Setting up what encoder rotation does. If your encoder can be pressed as a button, that function can be set in Via.
 
 #ifdef ENCODER_ENABLE
+#define MODE_LEFT 2
+#define MODE_RIGHT 3
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (layer_state_cmp(layer_state, _LOWER)) {
+    if (layer_state_cmp(layer_state, MODE_LEFT)) {
         if (index == 1) {
             if (clockwise) {
                 tap_code(KC_VOLU);
@@ -28,7 +30,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 tap_code(KC_VOLD);
             }
         }
-    } else if (layer_state_cmp(layer_state, _RAISE)) {
+    } else if (layer_state_cmp(layer_state, MODE_RIGHT)) {
         if (index == 0) {
             if (clockwise) {
                 tap_code(KC_BRIU);
